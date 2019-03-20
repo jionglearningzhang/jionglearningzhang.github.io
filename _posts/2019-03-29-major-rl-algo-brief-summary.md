@@ -5,7 +5,7 @@ date: 2019-04-08 01:09:00
 tags: reinforcement learning
 ---
 
-![Reinforcement Learning Algorithms](/images/rl-algos.jpg)
+![Reinforcement Learning Algorithms]({{'/images/rl-algos.jpg'|trlative_url}}){: style="width: 65%;" class="center"}
 
 ---
 ### Traditional reinforcement learning methods  
