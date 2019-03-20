@@ -5,7 +5,7 @@ date: 2019-04-08 01:09:00
 tags: reinforcement learning
 ---
 
-This post I try to line the major reinforcement learning algorithms together to show how the methods for reinforcement learning have evolved. The years of first proposal for the algorithms are listed. The floloowing figure shows how the algorithms are related with each other.
+This post I try to line the major reinforcement learning algorithms together to show how the methods for reinforcement learning have evolved. The years of first proposal for the algorithms are listed. The following figure shows how the algorithms are related with each other.
 
 ---
 
