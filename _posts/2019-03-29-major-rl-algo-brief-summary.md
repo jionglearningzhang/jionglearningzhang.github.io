@@ -10,7 +10,7 @@ tags: reinforcement learning
 ---
 ### Traditional reinforcement learning methods  
 
-* [SARSA (on-policy TD control)](http://incompleteideas.net/book/first/ebook/node64.html) 
+* [SARSA (on-policy TD control)](http://incompleteideas.net/book/first/ebook/node64.html) [1994]
 * [Q-learning (SARSAMAX)](https://link.springer.com/content/pdf/10.1007/BF00992698.pdf) [1992]
 * [REINFORCE](https://link.springer.com/content/pdf/10.1007%2FBF00992696.pdf) [1992]
 
