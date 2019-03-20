@@ -5,12 +5,16 @@ date: 2019-04-08 01:09:00
 tags: reinforcement learning
 ---
 
+This post I try to line the major reinforcement learning algorithms together to show how the methods for reinforcement learning have evolved. The years of first proposal for the algorithms are listed. The floloowing figure shows how the algorithms are related with each other.
+
+---
+
 ![Reinforcement Learning Algorithms]({{'/images/rl_algos.jpg'|relative_url}})
 
 ---
 ### Traditional reinforcement learning methods  
-
-* [SARSA (on-policy TD control)](http://incompleteideas.net/book/first/ebook/node64.html) [1994]
+* [Monte-Carlo Method](http://incompleteideas.net/book/bookdraft2018jan1.pdf)[1945]
+* [SARSA (on-policy TD control)](http://incompleteideas.net/book/first/ebook/node64.html) [1988]
 * [Q-learning (SARSAMAX)](https://link.springer.com/content/pdf/10.1007/BF00992698.pdf) [1992]
 * [REINFORCE](https://link.springer.com/content/pdf/10.1007%2FBF00992696.pdf) [1992]
 
