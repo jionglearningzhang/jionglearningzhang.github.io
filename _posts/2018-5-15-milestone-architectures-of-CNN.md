@@ -1,7 +1,7 @@
 ---
 layout: post
 title: A review of milestones of CNN architecture
-tags: review
+tags: [review]
 ---
 
 This post works as a review for the evolvement of convolutional neural networks. 
