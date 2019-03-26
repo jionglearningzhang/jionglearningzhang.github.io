@@ -7,7 +7,7 @@ tags: reinforcement learning
 
 >A big branch of solving reinforcement learning is based on learning the Q (state-action value function).  
 
-[Bellman equation](#Bellman-equation)
+[Bellman equation](#bellman-equation)
 
 ![Reinforcement Learning Algorithms]({{'/images/deepQ.jpg'|relative_url}})
 
