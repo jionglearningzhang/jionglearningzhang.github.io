@@ -63,16 +63,17 @@ Feature creation
 Feature Selection
     Features can be selected through two routes: from feature analysis and from model performance.
 
-    a. Feature analysis
-        1. Feature distribution on labels.
-        2. Feature attributes (ex. stats, boxplot, correlations, ...).
-    b. Feature selection
-        1. Removing features with low variance
-        2. Univariate feature selection
-        3. Recursive feature elimination
-        4. Selecting from model
-		
-		
+ 1. Feature analysis  
+        a. Feature distribution on labels.  
+        b. Feature attributes (ex. stats, boxplot, correlations, ...).
+ 2. Feature selection  
+        a. Removing features with low variance  
+        b. Univariate feature selection  
+        c. Recursive feature elimination  
+        d. Selecting from model  
+
+
+​		
 # 6. Model [Parameters] Selection
 
 Given the input features' data structure, think about which model can be a good fit. For these models, understand how its parameters will influence the results. Utilize your established pipeline to do grid search and select the best model.
