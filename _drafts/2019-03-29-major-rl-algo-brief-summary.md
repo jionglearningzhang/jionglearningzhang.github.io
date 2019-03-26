@@ -1,7 +1,7 @@
 ---
 layout: post
 title: A brief summary of major reinforcement learning algorithms
-date: 2019-04-08 01:09:00
+date: 2019-03-29 01:09:00
 tags: reinforcement learning
 ---
 
@@ -12,14 +12,14 @@ This post I try to line the major reinforcement learning algorithms together to 
 ![Reinforcement Learning Algorithms]({{'/images/rl_algos.jpg'|relative_url}})
 
 ---
-### Traditional reinforcement learning methods  
+### Traditional reinforcement learning methods
 * [Monte-Carlo Method](http://incompleteideas.net/book/bookdraft2018jan1.pdf)[1945]
 * [SARSA (on-policy TD control)](http://incompleteideas.net/book/first/ebook/node64.html) [1988]
 * [Q-learning (SARSAMAX)](https://link.springer.com/content/pdf/10.1007/BF00992698.pdf) [1992]
 * [REINFORCE](https://link.springer.com/content/pdf/10.1007%2FBF00992696.pdf) [1992]
 
 ---
-### Value-based deep reinforcement learning methods  
+### Value-based deep reinforcement learning methods
 
 * [DQN](https://deepmind.com/research/dqn/) [2015]
 * [DDQN](https://arxiv.org/abs/1509.06461) [2015]
@@ -31,7 +31,7 @@ This post I try to line the major reinforcement learning algorithms together to 
 * [Rainbow](https://arxiv.org/abs/1710.02298) [2018]
 
 ---
-### Policy-based deep reinforcement learning methods  
+### Policy-based deep reinforcement learning methods
 
 * [TRPO](https://arxiv.org/abs/1502.05477) [2015]
 * [Actor-Critic](https://papers.nips.cc/paper/1786-actor-critic-algorithms.pdf) [2002]
