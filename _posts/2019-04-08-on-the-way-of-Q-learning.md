@@ -8,3 +8,6 @@ tags: reinforcement learning
 A big branch of solving reinforcement learning is based on learning the Q (state-action value function).  
 
 ![Reinforcement Learning Algorithms]({{'/images/deepQ.jpg'|relative_url}})
+
+Monte-Carlo method:  
+$$Q(S,A) \leftarrow Q(S,A) + \alpha (G_t - Q(S,A))$$

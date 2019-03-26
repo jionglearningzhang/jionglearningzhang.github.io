@@ -1,6 +1,6 @@
 ---
 layout: post
-title: A brief summary of major reinforcement learning algorithms
+title: A brief summary of major model-free reinforcement learning algorithms
 date: 2019-03-29 01:09:00
 tags: reinforcement learning
 ---
@@ -24,6 +24,7 @@ This post I try to line the major reinforcement learning algorithms together to 
 * [DQN](https://deepmind.com/research/dqn/) [2015]
 * [DDQN](https://arxiv.org/abs/1509.06461) [2015]
 * [Dueling DQN](https://arxiv.org/abs/1511.06581) [2015]
+* [Recurrent DQN](https://arxiv.org/abs/1507.06527) [2015]
 * [Prioritized Experience Replay](https://arxiv.org/abs/1511.05952) [2016]
 * [A3C](https://arxiv.org/abs/1602.01783) [2016]
 * [Distibutional DQN](https://arxiv.org/abs/1707.06887) [2017]
