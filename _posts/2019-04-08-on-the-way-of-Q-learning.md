@@ -6,23 +6,24 @@ tags: reinforcement learning
 ---
 
 A big branch of solving reinforcement learning is based on learning the Q (state-action value function).  
+[Bellman equation](#Bellman-equation)
 
 ![Reinforcement Learning Algorithms]({{'/images/deepQ.jpg'|relative_url}})
 
-Bellman equation:
+## Bellman equation
 
 
-Monte-Carlo method:  
+## Monte-Carlo method  
 $$Q(S_t, A_t) \leftarrow Q(S_t, A_t) + \alpha (G_t - Q(S_t, A_t))$$
 
-TD-control (SARSA):  
+## TD-control (SARSA) 
 $$Q(S_t, A_t) \leftarrow Q(S_t,A_t) + \alpha (R_{t+1} + \gamma Q(S_{t+1},A_{t+1}) - Q(S_t,A_t))$$  
 
-Q-learning (SARSAMAX):  
+## Q-learning (SARSAMAX) 
 $$Q(S_t, A_t) \leftarrow Q(S_t,A_t) + \alpha (R_{t+1} + \gamma \underset{a'}{\max}Q(S_{t+1}, a') - Q(S_t,A_t))$$  
 
 
-DQN:
+## DQN:
 Freeze the target network.
 $$Q(S_t, A_t;\theta) \leftarrow Q(S_t,A_t;\theta) + \alpha (R_{t+1} + \gamma \underset{a'}{\max}Q(S_{t+1}, a';\theta^-) - Q(S_t,A_t;\theta))$$  
 Experience replay to decoupling correlation.  
