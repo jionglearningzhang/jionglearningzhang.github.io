@@ -74,7 +74,7 @@ Feature Selection
 
 
 ​		
-# 6. Model [Parameters] Selection
+# 6. Model / Parameters Selection
 
 Given the input features' data structure, think about which model can be a good fit. For these models, understand how its parameters will influence the results. Utilize your established pipeline to do grid search and select the best model.
 
