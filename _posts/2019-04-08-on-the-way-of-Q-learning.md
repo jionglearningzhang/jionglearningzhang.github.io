@@ -7,4 +7,4 @@ tags: reinforcement learning
 
 A big branch of solving reinforcement learning is based on learning the Q (state-action value function).  
 
-![Reinforcement Learning Algorithms]({{'/images/deepQ.pdf'|relative_url}})
+![Reinforcement Learning Algorithms]({{'/images/deepQ.jpg'|relative_url}})
