@@ -37,7 +37,7 @@ Issues of DQN:
 
 Double DQN (DDQN):  
 The idea of DDQN was proposed to solve the overestimation issue in Q learning. It Decouples the evaluation and action selection in the target. The online network is used to select the action.
-$$Q(S_t, A_t;\theta) \leftarrow Q(S_t,A_t;\theta) + \alpha (R_{t+1} + \gamma Q(S_{t+1}, argmax_{a'}Q(S_t, a'; \theta});\theta^-) - Q(S_t,A_t;\theta))$$  
+$$Q(S_t, A_t;\theta) \leftarrow Q(S_t,A_t;\theta) + \alpha (R_{t+1} + \gamma Q(S_{t+1}, argmax_{a'}Q(S_t, a'; \theta);\theta^-) - Q(S_t,A_t;\theta))$$  
 
 Dueling Q Network:  
 There are cases for some certain states, choose which actions do not influence much following rewards and transitions. The dueling Q network represent this by having two streams representing the state value function $$V$$ and the advantage function $$A$$ for each action.
