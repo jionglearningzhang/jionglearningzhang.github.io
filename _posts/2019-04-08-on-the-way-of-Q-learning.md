@@ -5,26 +5,34 @@ date: 2019-04-08 01:09:00
 tags: reinforcement learning
 ---
 
->A big branch of solving reinforcement learning is based on learning the Q (state-action value function).  
+>A big branch of solving reinforcement learning is based on learning the Q (state-action value function). Let's take a look on how the methods evolved to learn Q better.  
 
-[Bellman equation](#bellman-equation)
+[Before Deep Q Network](#befored-deep-q-network)  
+[Kick-start with DQN](#dqn)  
+[Enhance DQN](#enhance-dqn)  
+[Rainbow](#rainbow)  
+
 
 ![Reinforcement Learning Algorithms]({{'/images/deepQ.jpg'|relative_url}})
 
-## Bellman equation
+The goal of reinforcement learning is to establish a policy, based on which to select actions at given states so that the long term return is maximized. One way is to learn the optimal state-action value function $Q^*(S, A)$, and thus the optimal policy naturaly becomes $\pi^*(A|S) = \underset{a'}{\arg\max}Q(S_t, a')$. With the model-free problem setting, the problem reduces as how to estimate the optimal state-action value function $Q^*(S, A)$. Through the generalized policy iterations, policy evaluation estimates the value function, and in the policy improvement part, policy get improved with updated value function. Thus, the leftover issue is how to estimate the state-action value function $Q(S,A)$ from the experiences (state transitions) the agent gets through interact with the environment. This post talk through value-based milestone methods to get the idea of how we learn Q better.
+[//]: # (TODO: add Q convergence to Q* )
 
 
-## Monte-Carlo method  
+## Before Deep Q Network
+
+### Monte-Carlo method  
+
 $$Q(S_t, A_t) \leftarrow Q(S_t, A_t) + \alpha (G_t - Q(S_t, A_t))$$
 
-## TD-control (SARSA) 
+### TD-control (SARSA) 
 $$Q(S_t, A_t) \leftarrow Q(S_t,A_t) + \alpha (R_{t+1} + \gamma Q(S_{t+1},A_{t+1}) - Q(S_t,A_t))$$  
 
-## Q-learning (SARSAMAX) 
+### Q-learning (SARSAMAX) 
 $$Q(S_t, A_t) \leftarrow Q(S_t,A_t) + \alpha (R_{t+1} + \gamma \underset{a'}{\max}Q(S_{t+1}, a') - Q(S_t,A_t))$$  
 
 
-## DQN:
+## Kick-start with DQN
 Freeze the target network.
 $$Q(S_t, A_t;\theta) \leftarrow Q(S_t,A_t;\theta) + \alpha (R_{t+1} + \gamma \underset{a'}{\max}Q(S_{t+1}, a';\theta^-) - Q(S_t,A_t;\theta))$$  
 Experience replay to decoupling correlation.  
@@ -37,28 +45,30 @@ Issues of DQN:
 2. Overestimation caused by max operation  
 3. Exploration  
 
-Double DQN (DDQN):  
+## Enhance DQN
+### Double DQN (DDQN)
 The idea of DDQN was proposed to solve the overestimation issue in Q learning. It Decouples the evaluation and action selection in the target. The online network is used to select the action.
 $$Q(S_t, A_t;\theta) \leftarrow Q(S_t,A_t;\theta) + \alpha (R_{t+1} + \gamma Q(S_{t+1}, \underset{a'}{\arg\max}Q(S_t, a'; \theta);\theta^-) - Q(S_t,A_t;\theta))$$  
 
-Dueling Q Network:  
+### Dueling Q Network  
 There are cases for some certain states, choose which actions do not influence much following rewards and transitions. The dueling Q network represent this by having two streams representing the state value function $$V$$ and the advantage function $$A$$ for each action.
 $$Q = Q + (A - \bar{A})$$
 
-Prioritized Experience Replay:
+### Prioritized Experience Replay
 Sampling with TD-error.
 
-A3C:  
+### A3C  
 Multi-step estimation.
 
-Distributional DQN:  
+### Distributional DQN  
 Estimate distribution of Q instead of expectation.
 
-Noisy Net:
+### Noisy Net
 Replacing linear layer with stochastic layer.
 $$y = b+Wx \leftarrow y = (b+Wx) + (b*\epsilon^b + W*\epsilon^Wx)$$
 
 Combine all these complementary improvements based on DQN, the algorithm Rainbow is established.
 
+## Rainbow
 
 
