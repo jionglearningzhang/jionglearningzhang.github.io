@@ -28,12 +28,12 @@ $$Q(S_t, A_t) \leftarrow Q(S_t, A_t) + \alpha (G_t - Q(S_t, A_t))$$
 ### TD-control (SARSA) 
 
 $$ G_t \leftarrow R_{t+1} + \gamma Q(S_{t+1},A_{t+1}) $$  
-$$Q(S_t, A_t) \leftarrow Q(S_t,A_t) + \alpha (<span style="color:red">R_{t+1} + \gamma Q(S_{t+1},A_{t+1})</span> - Q(S_t,A_t))$$  
+$$Q(S_t, A_t) \leftarrow Q(S_t,A_t) + \alpha (R_{t+1} + \gamma Q(S_{t+1},A_{t+1}) - Q(S_t,A_t))$$  
 
 ### Q-learning (SARSAMAX) 
 
 $$G_t \leftarrow R_{t+1} + \gamma \underset{a'}{\max}Q(S_{t+1}, a')$$  
-$$Q(S_t, A_t) \leftarrow Q(S_t,A_t) + \alpha (<span style="color:red"> R_{t+1} + \gamma \underset{a'}{\max}Q(S_{t+1}, a')</span> - Q(S_t,A_t))$$  
+$$Q(S_t, A_t) \leftarrow Q(S_t,A_t) + \alpha (R_{t+1} + \gamma \underset{a'}{\max}Q(S_{t+1}, a') - Q(S_t,A_t))$$  
 
 
 ## Kick-start with DQN
