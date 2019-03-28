@@ -91,7 +91,8 @@ All of the improvements mentioned previously are independent and complementary t
 5. As used in Noisy net, linear layers in Q networks are replaced by stochastic layers.
 
 
-<img src="/images/rainbow.png" width="60%" style="margin-left:auto; margin-right:auto;">
+<img src="/images/rainbow.png" width="70%" style="margin-left: auto;
+  margin-right: auto;">
 
 ## References
 1. [Human-level control through deep reinforcement
