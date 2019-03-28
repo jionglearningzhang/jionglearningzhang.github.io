@@ -41,7 +41,8 @@ $$Q(S_t, A_t) \leftarrow Q(S_t,A_t) + \alpha (R_{t+1} + \gamma \underset{a'}{\ma
 ## Kick-start with DQN
 Freeze the target network.
 
-$$Q(S_t, A_t;\theta) \leftarrow Q(S_t,A_t;\theta) + \alpha (R_{t+1} + \gamma \underset{a'}{\max}Q(S_{t+1}, a';\theta^-) - Q(S_t,A_t;\theta))$$  
+$$Q(S_t, A_t;\theta) \leftarrow Q(S_t,A_t;\theta) + \alpha (R_{t+1} + \gamma \underset{a'}{\max}Q(S_{t+1}, a';\theta^-) - Q(S_t,A_t;\theta))$$ 
+ 
 Experience replay to decoupling correlation.  
 
 Goal:
@@ -91,4 +92,4 @@ All of the improvements mentioned previously are independent and complementary t
 
 ![Rainbow benchmark]({{'/images/rainbow.png'|relative_url}}){ width: 200px; }
 
-
+<img src="/images/rainbow.png" width="60%">
