@@ -90,6 +90,5 @@ All of the improvements mentioned previously are independent and complementary t
 4. Priorized experience replay with sampling using KL loss as the proxy (instead of the TD-error in the non-distributional case).   
 5. As used in Noisy net, linear layers in Q networks are replaced by stochastic layers.
 
-![Rainbow benchmark]({{'/images/rainbow.png'|relative_url}}){ width: 200px; }
 
-<img src="/images/rainbow.png" width="60%">
+<img src="/images/rainbow.png" width="60%" style="margin-left:auto; margin-right:auto;">
