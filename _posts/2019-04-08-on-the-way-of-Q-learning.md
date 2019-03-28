@@ -26,9 +26,13 @@ The goal of reinforcement learning is to establish a policy, based on which to s
 $$Q(S_t, A_t) \leftarrow Q(S_t, A_t) + \alpha (G_t - Q(S_t, A_t))$$
 
 ### TD-control (SARSA) 
+
+$$ G_t \leftarrow R_{t+1} + \gamma Q(S_{t+1},A_{t+1}) $$  
 $$Q(S_t, A_t) \leftarrow Q(S_t,A_t) + \alpha (R_{t+1} + \gamma Q(S_{t+1},A_{t+1}) - Q(S_t,A_t))$$  
 
 ### Q-learning (SARSAMAX) 
+
+$$G_t \leftarrow R_{t+1} + \gamma \underset{a'}{\max}Q(S_{t+1}, a')$$  
 $$Q(S_t, A_t) \leftarrow Q(S_t,A_t) + \alpha (R_{t+1} + \gamma \underset{a'}{\max}Q(S_{t+1}, a') - Q(S_t,A_t))$$  
 
 
