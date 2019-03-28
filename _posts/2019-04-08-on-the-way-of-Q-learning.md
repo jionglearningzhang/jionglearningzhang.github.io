@@ -21,11 +21,15 @@ The goal of reinforcement learning is to establish a policy, based on which to s
 
 ## Before Deep Q Network
 
+Reinforcement learning is not a new idea. It was invented back in the year of 1962. Though it blows up with suprisingly good super human level performances on varous tasks in recent years with the improvements in deep learning domain, the major ideas for solving reinforcement learning problems were established years ago.
+
 ### Monte-Carlo method  
+The key idea of value-based methods is just to evalute state-action value functions from experences and then improve policy based on Q. The natual way of estimating the expected returns for a given pair of state and action is just averaging the accumulative episodic returns among episodes. In the Monte-Carlo metho, the Q value gets keeping updated with the return of newly sampled experience $G_t$ with a discounted factor $\alpha$, which represents how much of the memory to keep.
 
 $$Q(S_t, A_t) \leftarrow Q(S_t, A_t) + \alpha (G_t - Q(S_t, A_t))$$
 
 ### TD-control (SARSA) 
+While Monte-Carlo method could give unbiased estimations of Qs, it could only apply to episodic cases because of the requirement of having $G_t$ to update Q.
 
 $$ G_t \leftarrow R_{t+1} + \gamma Q(S_{t+1},A_{t+1}) $$  
 
