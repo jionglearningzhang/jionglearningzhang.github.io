@@ -9,7 +9,7 @@ tags: reinforcement learning
 
 [Before Deep Q Network](#befored-deep-q-network)  
 [Kick-start with DQN](#dqn)  
-[Enhance DQN](#enhance-dqn)  
+[Enhancements of DQN](#enhance-dqn)  
 [Rainbow](#rainbow)  
 
 
@@ -45,7 +45,7 @@ Goal:
 Better estimation of Q.
 
 Issues of DQN:  
-1. Data efficency issue because of uniform random exprience sampling  
+1. Data efficency issue because of using uniform random exprience sampling  
 2. Overestimation caused by max operation  
 3. Exploration  
 
@@ -59,7 +59,9 @@ There are cases for some certain states, choose which actions do not influence m
 $$Q = Q + (A - \bar{A})$$
 
 ### Prioritized Experience Replay
-Sampling with TD-error.
+Sampling with TD-error.  
+Intermidieate factor between prioritized sampling and uniform sampling 
+Correct estimation bias with importance sampling
 
 ### A3C  
 Multi-step estimation.
@@ -74,5 +76,13 @@ $$y = b+Wx \leftarrow y = (b+Wx) + (b*\epsilon^b + W*\epsilon^Wx)$$
 Combine all these complementary improvements based on DQN, the algorithm Rainbow is established.
 
 ## Rainbow
+All of the improvements mentioned previously are independent and complementary to each other. In the paper, all of these developments are combined to formulate the strongest agent: Rainbow. it is composed as following:  
+1. Use distibutional multi-step Q-distribution KL-divergence as the loss function.    
+2. Q functions are estimated with dueling network, whose outputs are categorical distributions.  
+3. Double DQN was used for policy evaluation.  
+4. Priorized experience replay with sampling using KL loss as the proxy (instead of the TD-error in the non-distributional case).   
+5. As used in Noisy net, linear layers in Q networks are replaced by stochastic layers.
+
+![Rainbow benchmark]({{'/images/rainbow.png'|relative_url}})
 
 
