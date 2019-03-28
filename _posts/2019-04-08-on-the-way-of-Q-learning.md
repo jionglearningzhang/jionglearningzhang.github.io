@@ -92,3 +92,19 @@ All of the improvements mentioned previously are independent and complementary t
 
 
 <img src="/images/rainbow.png" width="60%" style="margin-left:auto; margin-right:auto;">
+
+## References
+1. [Human-level control through deep reinforcement
+learning](https://storage.googleapis.com/deepmind-media/dqn/DQNNaturePaper.pdf)
+2. [
+Dueling Network Architectures for Deep Reinforcement Learning](https://arxiv.org/abs/1511.06581)
+3. [
+Deep Reinforcement Learning with Double Q-learning](https://arxiv.org/abs/1509.06461)
+4. [
+Prioritized Experience Replay](https://arxiv.org/abs/1511.05952)
+5. [
+Asynchronous Methods for Deep Reinforcement Learning](https://arxiv.org/abs/1602.01783)
+6. [An Analysis of Temporal-Difference Learning
+with Function Approximation](http://web.mit.edu/jnt/www/Papers/J063-97-bvr-td.pdf)
+7. [Algorithms for Reinforcement Learning](https://sites.ualberta.ca/~szepesva/papers/RLAlgsInMDPs.pdf)
+8. [Rainbow: Combining Improvements in Deep Reinforcement Learning](https://arxiv.org/abs/1710.02298)
