@@ -24,25 +24,28 @@ The goal of reinforcement learning is to establish a policy, based on which to s
 Reinforcement learning is not a new idea. It was invented back in the year of 1962. Though it blows up with suprisingly good super human level performances on varous tasks in recent years with the improvements in deep learning domain, the major ideas for solving reinforcement learning problems were established years ago.
 
 ### Monte-Carlo method  
-The key idea of value-based methods is just to evalute state-action value functions from experences and then improve policy based on Q. The natual way of estimating the expected returns for a given pair of state and action is just averaging the accumulative episodic returns among episodes. In the Monte-Carlo metho, the Q value gets keeping updated with the return of newly sampled experience $G_t$ with a discounted factor $\alpha$, which represents how much of the memory to keep.
+The key idea of value-based methods is just to evalute state-action value functions from experences and then improve policy based on Q. The natual way of estimating the expected returns for a given pair of state and action is just averaging the accumulative episodic returns among episodes. In the Monte-Carlo method, the Q value gets keeping updated with the return of newly sampled experience $G_t$ with a learning rate $\alpha$, which represents how much of the memory to keep/lose. 
 
 $$Q(S_t, A_t) \leftarrow Q(S_t, A_t) + \alpha (G_t - Q(S_t, A_t))$$
 
 ### TD-control (SARSA) 
-While Monte-Carlo method could give unbiased estimations of Qs, it could only apply to episodic cases because of the requirement of having $G_t$ to update Q.
-
+While Monte-Carlo method could give unbiased estimations of Qs, it could only be applied to episodic cases because of the requirement of having $G_t$ to update Q. In fact, during the policy evaluation, while just looking as one transition $(S, A, R, S', A')$, we have already had  information to learn from and a way to estimate the return in a bootstrap fashion with this one-step reward and estimation of Q from previous iteration:  
 $$ G_t \leftarrow R_{t+1} + \gamma Q(S_{t+1},A_{t+1}) $$  
 
+As it was done in the Monte-Carlo method, the Q function gets updated with the new estimation from the experience it learns from.
 $$Q(S_t, A_t) \leftarrow Q(S_t,A_t) + \alpha (R_{t+1} + \gamma Q(S_{t+1},A_{t+1}) - Q(S_t,A_t))$$  
+During the policy improvement step, $\epsilon-greedy$ is used. Thus we have the full cycyle of  the generalized policy iteration for solving the problem. This is a super important method in reinforcement learning as it was said to be undoubtedly "one idea as central and novel to reinforcement learning".
 
 ### Q-learning (SARSAMAX) 
-
+Basicly all value-based methods are based on the idea of TD-contral trying to developing various ideas to learn Q better. To be more specificly, having different ideas for estimating $G_t$ which will be used for updating Q. In TD-control method, the on-policy evaluation is used. Q-learning or SARSAMAX estimates $G_t$ with off-policy way to maximize the next step return: 
 $$G_t \leftarrow R_{t+1} + \gamma \underset{a'}{\max}Q(S_{t+1}, a')$$  
 
 $$Q(S_t, A_t) \leftarrow Q(S_t,A_t) + \alpha (R_{t+1} + \gamma \underset{a'}{\max}Q(S_{t+1}, a') - Q(S_t,A_t))$$  
 
 
 ## Kick-start with DQN
+On Februry 26th 2015, DeepMind published a paper in Nature to describe the method of DQN, which revolutionized the domain of deep learning and started the era of deep reinforcement learning. The DQN employed deep nural networks for approximate functions with reinforcement learning for the first time and reached superhuman level performance on Atari 2600 games.
+
 Freeze the target network.
 
 $$Q(S_t, A_t;\theta) \leftarrow Q(S_t,A_t;\theta) + \alpha (R_{t+1} + \gamma \underset{a'}{\max}Q(S_{t+1}, a';\theta^-) - Q(S_t,A_t;\theta))$$ 
@@ -113,3 +116,4 @@ Asynchronous Methods for Deep Reinforcement Learning](https://arxiv.org/abs/1602
 with Function Approximation](http://web.mit.edu/jnt/www/Papers/J063-97-bvr-td.pdf)
 7. [Algorithms for Reinforcement Learning](https://sites.ualberta.ca/~szepesva/papers/RLAlgsInMDPs.pdf)
 8. [Rainbow: Combining Improvements in Deep Reinforcement Learning](https://arxiv.org/abs/1710.02298)
+9. [Reinforcement Learning: An Introduction](https://mitpress.mit.edu/books/reinforcement-learning-second-edition)
