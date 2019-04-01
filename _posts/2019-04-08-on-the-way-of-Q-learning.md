@@ -44,7 +44,7 @@ $$Q(S_t, A_t) \leftarrow Q(S_t,A_t) + \alpha (R_{t+1} + \gamma \underset{a'}{\ma
 
 
 ## Kick-start with DQN
-On Februry 26th 2015, DeepMind published a paper in Nature to describe the method of DQN, which revolutionized the domain of deep learning and started the era of deep reinforcement learning. The DQN employed deep nural networks for approximate functions with reinforcement learning for the first time and reached superhuman level performance on Atari 2600 games.
+On Februry 26th 2015, DeepMind published a paper in Nature to describe the method of DQN, which revolutionized the domain of deep learning and started the era of deep reinforcement learning. The DQN employed deep nural networks for approximate functions with reinforcement learning for the first time and reached superhuman level performance on Atari 2600 games.  
 
 Freeze the target network.
 
