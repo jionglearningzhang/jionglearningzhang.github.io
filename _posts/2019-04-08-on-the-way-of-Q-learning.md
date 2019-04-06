@@ -30,14 +30,18 @@ $$Q(S_t, A_t) \leftarrow Q(S_t, A_t) + \alpha (G_t - Q(S_t, A_t))$$
 
 ### TD-control (SARSA) 
 While Monte-Carlo method could give unbiased estimations of Qs, it could only be applied to episodic cases because of the requirement of having $G_t$ to update Q. In fact, during the policy evaluation, while just looking as one transition $(S, A, R, S', A')$, we have already had  information to learn from and a way to estimate the return in a bootstrap fashion with this one-step reward and estimation of Q from previous iteration:  
+
 $$ G_t \leftarrow R_{t+1} + \gamma Q(S_{t+1},A_{t+1}) $$  
 
 As it was done in the Monte-Carlo method, the Q function gets updated with the new estimation from the experience it learns from.
+
 $$Q(S_t, A_t) \leftarrow Q(S_t,A_t) + \alpha (R_{t+1} + \gamma Q(S_{t+1},A_{t+1}) - Q(S_t,A_t))$$  
+
 During the policy improvement step, $\epsilon-greedy$ is used. Thus we have the full cycyle of  the generalized policy iteration for solving the problem. This is a super important method in reinforcement learning as it was said to be undoubtedly "one idea as central and novel to reinforcement learning".
 
 ### Q-learning (SARSAMAX) 
 Basically all value-based methods are based on the idea of TD-control trying to developing various ideas to learn Q better. To be more specifically, having different ideas for estimating $G_t$ which will be used for updating Q. In TD-control method, the on-policy evaluation is used. Q-learning or SARSAMAX estimates $G_t$ with off-policy way to maximize the next step return: 
+
 $$G_t \leftarrow R_{t+1} + \gamma \underset{a'}{\max}Q(S_{t+1}, a')$$ . 
 
 $$Q(S_t, A_t) \leftarrow Q(S_t,A_t) + \alpha (R_{t+1} + \gamma \underset{a'}{\max}Q(S_{t+1}, a') - Q(S_t,A_t))$$  
@@ -53,18 +57,19 @@ TODO: problem with large nonlinear approximate function for Q
 Besides using the neural network as the approximate function, two key ideas were proposed and implemented to make the algorithm successful: target network frozen and experience replay.  
 
 In Q-learning, the evaluation network of target and learning is the same network which gets updated every step. This setup causes the issue. DQN decouples the target network for estimating $Q(t+1, a')$ and the online learning network for estimating $Q(t, a)$ through freezing the parameters in the target network, written as $Q(t,a;\theta^-)$,  for several iterations and updated periodically by copying the parameters of the online learning network $Q(t,a;\theta)$. 
+
 $$Q(S_t, A_t;\theta) \leftarrow Q(S_t,A_t;\theta) + \alpha (R_{t+1} + \gamma \underset{a'}{\max}Q(S_{t+1}, a';\theta^-) - Q(S_t,A_t;\theta))$$ 
  
 The original Q-learning is an online-learning algorithm, meaning that it learn from each incomming example and then forget about it. While all the examples could be stored and replay for learning to improve the data efficiency. This idea is implemented in DQN, namely the Experience replay.  This algorithm stores the transitions in a buffer, and uniformly random sample a batch of transitions to learn from at each step. This part becomes a supervised learning problem: given a batch of samples, the network parameters are updated through minimizing the loss function which measures the difference between the on line network estimated value and the target value.
 
 Great! Now we have a algorithm outperforms human on Atari 2600 games! This is just a start. Before we go further to go through enhancements on DQN, let's take a look at what issues of DQN still exsits and how possibly further improvements can be developed.
 
-The general goal: have a better estimation of Q.
+**The general goal**: have a better estimation of Q.
 
-Existing Issues of DQN:  
+**Existing Issues of DQN**:  
 1. Data efficency issue because of using uniform random experience sampling  
 2. Overestimation caused by max operation  
-3. Exploration  
+3. Low efficiency exploration  
 
 ## Enhance DQN
 With the efforts of addressing the existing issues of DQN and achieving the general goal of estimate Q better, a series of papers have been published to improve DQN. We now talk about the key ideas in these papers and what issues they addressed to prepare for putting all these improvements together to build [Rainbow](#rainbow) . 
