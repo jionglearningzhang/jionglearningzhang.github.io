@@ -42,7 +42,7 @@ During the policy improvement step, $\epsilon-greedy$ is used. Thus we have the 
 ### Q-learning (SARSAMAX) 
 Basically all value-based methods are based on the idea of TD-control trying to developing various ideas to learn Q better. To be more specifically, having different ideas for estimating $G_t$ which will be used for updating Q. In TD-control method, the on-policy evaluation is used. Q-learning or SARSAMAX estimates $G_t$ with off-policy way to maximize the next step return: 
 
-$$G_t \leftarrow R_{t+1} + \gamma \underset{a'}{\max}Q(S_{t+1}, a')$$ . 
+$$G_t \leftarrow R_{t+1} + \gamma \underset{a'}{\max}Q(S_{t+1}, a')$$
 
 $$Q(S_t, A_t) \leftarrow Q(S_t,A_t) + \alpha (R_{t+1} + \gamma \underset{a'}{\max}Q(S_{t+1}, a') - Q(S_t,A_t))$$  
 
