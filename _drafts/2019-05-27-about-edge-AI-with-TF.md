@@ -7,7 +7,7 @@ tags: review
 
 Edge computing is drawing more and more attentions. It is heavily applied in many fields such as intelligent apps on cell phones and in IoTs. Here at Mercedes-Benz R&D, we are also working on advanced development of edge AI frameworks on our Mercedes cars. In this post, I will give an overview of edge AI and how to develop edge AI with TensorFlow.
 
-# High efficient models
+# 1. High efficient models
 
 In general, high efficient network signifies small number of parameters, small amount of computation, high spped. While they are related to each other, they are indenpent goals to consider.
 
@@ -25,7 +25,11 @@ Floating point operations per second (FLOPS, flops or flop/s) is a measure of co
 
 ## Popular high efficient networks
 
-### Xception
+### [Xception](https://github.com/keras-team/keras-applications/blob/master/keras_applications/xception.py)
+
+We present an interpretation of Inception modules in convolutional neural networks, [Xception](https://arxiv.org/abs/1610.02357), as being an intermediate step in-between regular convolution and the depthwise separable convolution operation (a depthwise convolution followed by a pointwise convolution). 
+
+
 
 ### [CondenseNet](https://github.com/ShichenLiu/CondenseNet)
 
@@ -41,13 +45,15 @@ Floating point operations per second (FLOPS, flops or flop/s) is a measure of co
 
 
 
-### ShuffleNet V1
+### [ShuffleNet V1](https://github.com/MG2033/ShuffleNet)
+According to the authors, [ShuffleNet](https://arxiv.org/abs/1707.01083) is a computationally efficient CNN architecture designed specifically for mobile devices with very limited computing power. It outperforms Google MobileNet by small error percentage at much lower FLOPs.
+
+### [ShuffleNet V2](https://github.com/TropComplique/shufflenet-v2-tensorflow)
+[ShuffleNet V2: Practical Guidelines for Efficient CNN Architecture Design
+](https://arxiv.org/abs/1807.11164)
 
 
-### ShuffleNet V2
-
-
-## General thorughts of high efficient network design
+## General thoughts of high efficient network design
 
 0. Only use what is neccesary to the problem (model depth & complexity).
 1. depthwise separable convolutions.
@@ -57,7 +63,7 @@ Floating point operations per second (FLOPS, flops or flop/s) is a measure of co
 5. Reduce the number of element wise operations.
 
 
-# TensorFlow Lite for edge AI
+# 2. TensorFlow Lite for edge AI
 
   TensorFlow Lite is an open source deep learning framework for on-device inference. What worth mentioning is that on their roadmap, on-device training will also be supported.
   
