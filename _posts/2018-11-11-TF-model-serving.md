@@ -5,7 +5,7 @@ date: 2018-11-11 01:09:00
 tags: tutorial
 ---
 
-This notebook explain how do we serialize the trained TF (keras) models and serve them in python package.
+> This notebook explain how do we serialize the trained TF (keras) models and serve them in python package.
 
 The **tf.train.Saver** class provides methods to save and restore model variables. This require names of the tensors to be known, and we do not discuss here.
 

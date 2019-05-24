@@ -3,7 +3,7 @@ layout: post
 title: General guide of supervised learning data science project
 ---
 
-This writing works as a reminder of the supervised learning workflow for Data Science projects. Follow the steps listed.
+>This writing works as a reminder of the supervised learning workflow for Data Science projects. Follow the steps listed.
 
 
 # 1. Exploratory Data Analysis (EDA)

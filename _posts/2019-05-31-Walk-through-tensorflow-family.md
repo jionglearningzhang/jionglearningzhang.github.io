@@ -5,7 +5,9 @@ date: 2019-05-31 01:09:00
 tags: deep learning frameworks
 ---
 
-TensorFlow, which was first relaesed in 2015, is cureerly the largest deep learning framework exists so far. As the core TensorFlow grows, Google has also developed a series of library / frameworks around the core TensorFlow to build up a complete eco-system for deep learning related works. Here we briefly go through the current existing libraries / tools in the TensorFlow family so that we get a clear picture of what are available and what should they be properly used for.
+>TensorFlow, which was first relaesed in 2015, is cureerly the largest deep learning framework exists so far. As the core TensorFlow grows, Google has also developed a series of library / frameworks around the core TensorFlow to build up a complete eco-system for deep learning related works. 
+
+Here we briefly go through the current existing libraries / tools in the TensorFlow family so that we get a clear picture of what are available and what should they be properly used for.
 
 In this post, I will try to maintain a comprehensive list of the members in TensorFlow family. This list is orgnized accodring to the order of a machine learning pipeline.
 

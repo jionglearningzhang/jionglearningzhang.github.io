@@ -5,7 +5,7 @@ date: 2018-02-06 01:09:00
 tags: review
 ---
 
-With the trend of data science getting more and more popular,
+> With the trend of data science getting more and more popular,
 it is quite often the question asked "what is data science".
 While data science has a quite wide coverage, here I will try to give a brief overview of data science. 
 Hopefully, this blog could be helpful to gain better understanding of this field.
