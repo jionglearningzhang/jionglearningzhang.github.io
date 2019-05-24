@@ -11,7 +11,9 @@ Here we briefly go through the current existing libraries / tools in the TensorF
 
 In this post, I will try to maintain a comprehensive list of the members in TensorFlow family. This list is orgnized accodring to the order of a machine learning pipeline.
 
+---
 ## Prep
+---
 
 ### TensorFlow Datasets 
 ```python
@@ -23,7 +25,10 @@ TensorFlow Datasets is a collection of datasets ready to use with TensorFlow.
 * [Introducing TensorFlow Datasets](https://medium.com/tensorflow/introducing-tensorflow-datasets-c7f01f7e19f3)  
 * [A collection of datasets ready to use with TensorFlow.](https://www.tensorflow.org/datasets)
 
+---
+
 ## Core TensorFlow
+---
 
 ### TensorFlow Data
 ```python
@@ -33,6 +38,8 @@ tf.data
 This is the module for put up your input pipeline.
 
 [Guide of tf.data](https://www.tensorflow.org/guide/datasets)
+
+--- 
 
 ### Ragged Tensors
 ```python
@@ -48,6 +55,8 @@ Your data comes in many shapes; your tensors should too. Ragged tensors are the 
 
 [Guide of Ragged Tensors](https://www.tensorflow.org/guide/ragged_tensors)
 
+---
+
 ### TensorFlow Keras
 ```python
 import tensorflow as tf
@@ -56,6 +65,8 @@ tf.keras
 Keras is a high-level API to build and train deep learning models. It's used for fast prototyping, advanced research, and production.
 
 [Guide of tf.keras](https://www.tensorflow.org/guide/keras)
+
+---
 
 ### TensorFlow Estimator
 ```python
@@ -72,11 +83,15 @@ Estimators, which should be used for machine learning production development, en
 
 [Guide of Estimators](https://www.tensorflow.org/guide/estimators)
 
+---
+
 ### TensorFlow Feature Columns
 
 feature columns—a data structure describing the features that an Estimator requires for training and inference. As you'll see, feature columns are very rich, enabling you to represent a diverse range of data.
 
 [Introducing TensorFlow Feature Columns](https://developers.googleblog.com/2017/11/introducing-tensorflow-feature-columns.html)
+
+--- 
 
 ### TensorFlow Lite
 ```python
@@ -87,6 +102,8 @@ tf.lite
 TensorFlow Lite is an open source deep learning framework for on-device inference.
 
 [TensorFlow Lite guide](https://www.tensorflow.org/lite/guide)
+
+--- 
 
 ### TensorFlow Model Optimization Toolkit
 ```python
@@ -100,6 +117,8 @@ This is a suite of techniques that developers, both novice and advanced, can use
 [Introducing the Model Optimization Toolkit for TensorFlow](https://medium.com/tensorflow/introducing-the-model-optimization-toolkit-for-tensorflow-254aca1ba0a3)  
 [Guide of model optimization](https://www.tensorflow.org/lite/performance/model_optimization)
 
+---
+
 ### TensorFlow Debugger 
 ```python
 from tensorflow.python import debug as tf_debug
@@ -110,7 +129,10 @@ tfdbg is a specialized debugger for TensorFlow. It lets you view the internal st
 [Guide of TensorFlow Debugger](https://www.tensorflow.org/guide/debugger)  
 [Debug TensorFlow Models with tfdbg](https://developers.googleblog.com/2017/02/debug-tensorflow-models-with-tfdbg.html)
 
+---
+
 ## Suites
+---
 
 ### TensorFlow Probability
 ```python
@@ -124,6 +146,8 @@ A probabilistic programming toolbox for machine learning researchers and practit
 [Introducing TensorFlow Probability](https://medium.com/tensorflow/introducing-tensorflow-probability-dca4c304e245)  
 [Guide of TensorFlow Probability](https://www.tensorflow.org/probability/overview)  
 
+---
+
 ### TF-Agents
 ```python
 import tf_agents
@@ -131,6 +155,8 @@ import tf_agents
 The library for reinforcement learning with TensorFlow.
 
 [TF-Agents github](https://github.com/tensorflow/agents)
+
+---
 
 ### TensorFlow Federated (TFF)
 
@@ -140,11 +166,15 @@ TensorFlow Federated (TFF) is an open source framework for experimenting with ma
 
 [Introducing TensorFlow Federated](https://medium.com/tensorflow/introducing-tensorflow-federated-a4147aa20041)
 
+---
+
 ### TensorFlow Privacy
 
 an open source library that makes it easier not only for developers to train machine-learning models with privacy, but also for researchers to advance the state of the art in machine learning with strong privacy guarantees.
 
 [Introducing TensorFlow Privacy: Learning with Differential Privacy for Training Data](https://medium.com/tensorflow/introducing-tensorflow-privacy-learning-with-differential-privacy-for-training-data-b143c5e801b6)
+
+---
 
 ### TensorFlow Ranking
 
@@ -159,6 +189,8 @@ TensorFlow Ranking is a library for Learning-to-Rank (LTR) techniques on the Ten
 We envision that this library will provide a convenient open platform for hosting and advancing state-of-the-art ranking models based on deep learning techniques, and thus facilitate both academic research as well as industrial applications.
 
 [TF Ranking github](https://github.com/tensorflow/ranking)
+
+---
 
 ### TFX
 ```python
@@ -189,6 +221,8 @@ This diagram illustrates the flow of data between these components:
 [Official website](https://www.tensorflow.org/tfx)  
 [Guide of TFX](https://www.tensorflow.org/tfx/guide)
 
+---
+
 ### Mesh-TensorFlow
 ```python
 import mesh_tensorflow.auto_mtf
@@ -197,12 +231,18 @@ Mesh TensorFlow (mtf) is a language for distributed deep learning, capable of sp
 
 [Github](https://github.com/tensorflow/mesh)
 
+---
+
 ## Utils
+
+---
 
 ### TensorBoard
  You can use TensorBoard to visualize your TensorFlow graph, plot quantitative metrics about the execution of your graph, and show additional data like images that pass through it. 
 
 [Official website](https://www.tensorflow.org/guide/summaries_and_tensorboard)
+
+--- 
 
 ### Model optimization
 
@@ -215,6 +255,7 @@ The TensorFlow Model Optimization Toolkit is a suite of tools for optimizing ML 
 [Official website](https://www.tensorflow.org/model_optimization)  
 [Guide of TensorFlow model optimization](https://www.tensorflow.org/model_optimization/guide)
 
+---
 
 ### TensorFlow Hub
 
@@ -227,6 +268,8 @@ TensorFlow Hub is a library for the publication, discovery, and consumption of r
 [Introducing TensorFlow Hub](https://medium.com/tensorflow/introducing-tensorflow-hub-a-library-for-reusable-machine-learning-modules-in-tensorflow-cdee41fa18f9)  
 [Guide of TensorFlow Hub](https://www.tensorflow.org/hub/overview)
 
+---
+
 ### TesnsorFlow Serving
 
 TensorFlow Serving is a flexible, high-performance serving system for machine learning models, designed for production environments. TensorFlow Serving makes it easy to deploy new algorithms and experiments, while keeping the same server architecture and APIs. TensorFlow Serving provides out-of-the-box integration with TensorFlow models, but can be easily extended to serve other types of models and data.
@@ -234,7 +277,11 @@ TensorFlow Serving is a flexible, high-performance serving system for machine le
 [Guide of TF Serving](https://www.tensorflow.org/tfx/guide/serving)
 [Github of TF Serving](https://github.com/tensorflow/serving.git)
 
+---
+
 ## TensorFLow in other Language
+
+---
 
 ### TensorFLow.js
 
@@ -242,7 +289,14 @@ TensorFlow.js is a library for developing and training ML models in JavaScript, 
 
 [Official website](https://www.tensorflow.org/js)
 
-tf.swift
+---
+
+### Swift for TensorFlow
+
+Swift for TensorFlow is a next generation platform for deep learning and differentiable programming.
+By integrating directly with a general purpose programming language, Swift for TensorFlow enables more powerful algorithms to be expressed like never before.
+
+[Official website](https://www.tensorflow.org/swift)
 
 
  
