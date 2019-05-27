@@ -23,6 +23,11 @@ Floating point operations per second (FLOPS, flops or flop/s) is a measure of co
 
 ### memory access cost (MAC)
 
+
+### mAP
+
+(mean average precision) is the average of AP. AP (Average precision) is a popular metric in measuring the accuracy of object detectors like Faster R-CNN, SSD, etc. Average precision computes the average precision value for recall value over 0 to 1. 
+
 ## Popular high efficient networks
 
 ### [Xception](https://github.com/keras-team/keras-applications/blob/master/keras_applications/xception.py)
