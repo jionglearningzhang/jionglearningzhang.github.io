@@ -18,7 +18,7 @@ Multiply-Accumulates (MACs) which measures the number of fused Multiplication an
 
 
 
-###FLOPs
+### FLOPs
 Floating point operations per second (FLOPS, flops or flop/s) is a measure of computer performance, useful in fields of scientific computations that require floating-point calculations. For such cases it is a more accurate measure than measuring instructions per second.
 
 ### memory access cost (MAC)
