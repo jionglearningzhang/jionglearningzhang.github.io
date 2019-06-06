@@ -5,7 +5,7 @@ date: 2019-05-27 23:00:00
 tags: review
 ---
 
-Edge computing is drawing more and more attentions. It is heavily applied in many fields such as intelligent apps on cell phones and in IoTs. Here at Mercedes-Benz R&D, we are also working on advanced development of edge AI frameworks on our Mercedes cars. In this post, I will give an overview of edge AI and how to develop edge AI with TensorFlow.
+>Edge computing is drawing more and more attentions. It is heavily applied in many fields such as intelligent apps on cell phones and in IoTs. Here at Mercedes-Benz R&D, we are also working on advanced development of edge AI frameworks on our Mercedes cars. In this post, I will give an overview of edge AI and how to develop edge AI with TensorFlow.
 
 # 1. High efficient models
 
