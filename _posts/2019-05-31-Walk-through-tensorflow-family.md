@@ -291,6 +291,14 @@ TensorFlow.js is a library for developing and training ML models in JavaScript, 
 
 ---
 
+### TensorFLow.jl
+
+TensorFlow.jl is a library for developing and training ML models in Julia.
+
+[Official website](https://www.tensorflow.org/jl)
+
+---
+
 ### Swift for TensorFlow
 
 Swift for TensorFlow is a next generation platform for deep learning and differentiable programming.
