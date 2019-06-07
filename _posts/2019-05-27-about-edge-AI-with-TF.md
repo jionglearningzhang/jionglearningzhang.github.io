@@ -5,7 +5,8 @@ date: 2019-05-27 23:00:00
 tags: review
 ---
 
->Edge computing is drawing more and more attentions. It is heavily applied in many fields such as intelligent apps on cell phones and in IoTs. 
+>Edge computing is drawing more and more attentions. It is heavily applied in many fields such as intelligent apps on cell phones and in IoTs.
+
 Here at Mercedes-Benz R&D, we are also working on advanced development of edge AI frameworks on our Mercedes cars. In this post, I will give an overview of edge AI and how to develop edge AI with TensorFlow.
 
 # 1. High efficient models
@@ -14,7 +15,7 @@ In general, high efficient network signifies small number of parameters, small a
 
 ## Metrics to look at
 
-### Multiply-Accumulates (MACs) 
+### Multiply-Accumulates (MACs)
 Multiply-Accumulates (MACs) which measures the number of fused Multiplication and Addition operations. MACs, also sometimes known as MADDs - the number of multiply-accumulates needed to compute an inference on a single image is a common metric to measure the efficiency of the model.
 
 
@@ -27,13 +28,13 @@ Floating point operations per second (FLOPS, flops or flop/s) is a measure of co
 
 ### mAP
 
-(mean average precision) is the average of AP. AP (Average precision) is a popular metric in measuring the accuracy of object detectors like Faster R-CNN, SSD, etc. Average precision computes the average precision value for recall value over 0 to 1. 
+(mean average precision) is the average of AP. AP (Average precision) is a popular metric in measuring the accuracy of object detectors like Faster R-CNN, SSD, etc. Average precision computes the average precision value for recall value over 0 to 1.
 
 ## Popular high efficient networks
 
 ### [Xception](https://github.com/keras-team/keras-applications/blob/master/keras_applications/xception.py)
 
-We present an interpretation of Inception modules in convolutional neural networks, [Xception](https://arxiv.org/abs/1610.02357), as being an intermediate step in-between regular convolution and the depthwise separable convolution operation (a depthwise convolution followed by a pointwise convolution). 
+We present an interpretation of Inception modules in convolutional neural networks, [Xception](https://arxiv.org/abs/1610.02357), as being an intermediate step in-between regular convolution and the depthwise separable convolution operation (a depthwise convolution followed by a pointwise convolution).
 
 
 
@@ -43,7 +44,7 @@ We present an interpretation of Inception modules in convolutional neural networ
 
 ### [MobileNet V1](https://github.com/tensorflow/models/blob/master/research/slim/nets/mobilenet_v1.md)
 
-[MobileNets](https://arxiv.org/abs/1704.04861) are small, low-latency, low-power models parameterized to meet the resource constraints of a variety of use cases. They can be built upon for classification, detection, embeddings and segmentation similar to how other popular large scale models, such as Inception, are used. MobileNets can be run efficiently on mobile devices with TensorFlow Mobile. 
+[MobileNets](https://arxiv.org/abs/1704.04861) are small, low-latency, low-power models parameterized to meet the resource constraints of a variety of use cases. They can be built upon for classification, detection, embeddings and segmentation similar to how other popular large scale models, such as Inception, are used. MobileNets can be run efficiently on mobile devices with TensorFlow Mobile.
 
 ### [MobileNet V2](https://github.com/tensorflow/models/tree/master/research/slim/nets/mobilenet)
 
@@ -72,12 +73,12 @@ According to the authors, [ShuffleNet](https://arxiv.org/abs/1707.01083) is a co
 # 2. TensorFlow Lite for edge AI
 
   TensorFlow Lite is an open source deep learning framework for on-device inference. What worth mentioning is that on their roadmap, on-device training will also be supported.
-  
- 
+
+
 ### TensorFlow Lite converter
 
 Convert a TensorFlow model from proto buffer into a compressed flat buffer, which can be load directly on edge devices.
- 
+
 ```python
 import tensorflow as tf
 
