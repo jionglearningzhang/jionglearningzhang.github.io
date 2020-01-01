@@ -16,12 +16,12 @@ tags: reinforcement learning
 ![Reinforcement Learning Algorithms]({{'/images/deepQ.jpg'|relative_url}})
 
 The goal of reinforcement learning is to establish a policy, based on which to select actions at given states so that the long term return is maximized. One way is to learn the optimal state-action value function $Q^\*(S, A)$, and thus the optimal policy naturaly becomes $\pi^\*(A|S) = \underset{a'}{\arg\max}Q(S_t, a')$. With the model-free problem setting, the problem reduces as how to estimate the optimal state-action value function $Q^\*(S, A)$. Through the generalized policy iterations, policy evaluation estimates the value function, and in the policy improvement part, policy get improved with updated value function. Thus, the leftover issue is how to estimate the state-action value function $Q(S,A)$ from the experiences (state transitions) the agent gets through interact with the environment. This post talk through value-based milestone methods to get the idea of how we learn Q better.
-[//]: # (TODO: add Q convergence to Q* )
+[//]: # "TODO: add Q convergence to Q* "
 
 
 ## Before Deep Q Network
 
-Reinforcement learning is not a new idea. It was invented back in the year of 1962. Though it blows up with suprisingly good super human level performances on varous tasks in recent years with the improvements in deep learning domain, the major ideas for solving reinforcement learning problems were established years ago.
+Reinforcement learning is not a new idea. It was invented back in the year of 1962. Though it blows up with surprisingly good super human level performances on various tasks in recent years with the improvements in deep learning domain, the major ideas for solving reinforcement learning problems were established years ago.
 
 ### Monte-Carlo method  
 The key idea of value-based methods is just to evaluate state-action value functions from experiences and then improve policy based on Q. The natural way of estimating the expected returns for a given pair of state and action is just averaging the accumulative episodic returns among episodes. In the Monte-Carlo method, the Q value gets keeping updated with the return of newly sampled experience $G_t$ with a learning rate $\alpha$, which represents how much of the memory to keep/lose. 
@@ -49,7 +49,7 @@ $$Q(S_t, A_t) \leftarrow Q(S_t,A_t) + \alpha (R_{t+1} + \gamma \underset{a'}{\ma
 
 ## Kick-start with DQN
 
-On Februry 26th 2015, DeepMind published a paper in Nature to describe the method of DQN, which revolutionized the domain of deep learning and started the era of deep reinforcement learning. The DQN employed deep nural networks for approximate functions with reinforcement learning for the first time and reached superhuman level performance on Atari 2600 games.  
+On February 26th 2015, DeepMind published a paper in Nature to describe the method of DQN, which revolutionized the domain of deep learning and started the era of deep reinforcement learning. The DQN employed deep neural networks for approximate functions with reinforcement learning for the first time and reached superhuman level performance on Atari 2600 games.  
 
 
 TODO: problem with large nonlinear approximate function for Q  
@@ -59,15 +59,15 @@ Besides using the neural network as the approximate function, two key ideas were
 In Q-learning, the evaluation network of target and learning is the same network which gets updated every step. This setup causes the issue. DQN decouples the target network for estimating $Q(t+1, a')$ and the online learning network for estimating $Q(t, a)$ through freezing the parameters in the target network, written as $Q(t,a;\theta^-)$,  for several iterations and updated periodically by copying the parameters of the online learning network $Q(t,a;\theta)$. 
 
 $$Q(S_t, A_t;\theta) \leftarrow Q(S_t,A_t;\theta) + \alpha (R_{t+1} + \gamma \underset{a'}{\max}Q(S_{t+1}, a';\theta^-) - Q(S_t,A_t;\theta))$$ 
- 
-The original Q-learning is an online-learning algorithm, meaning that it learn from each incomming example and then forget about it. While all the examples could be stored and replay for learning to improve the data efficiency. This idea is implemented in DQN, namely the Experience replay.  This algorithm stores the transitions in a buffer, and uniformly random sample a batch of transitions to learn from at each step. This part becomes a supervised learning problem: given a batch of samples, the network parameters are updated through minimizing the loss function which measures the difference between the on line network estimated value and the target value.
 
-Great! Now we have a algorithm outperforms human on Atari 2600 games! This is just a start. Before we go further to go through enhancements on DQN, let's take a look at what issues of DQN still exsits and how possibly further improvements can be developed.
+The original Q-learning is an online-learning algorithm, meaning that it learn from each incoming example and then forget about it. While all the examples could be stored and replay for learning to improve the data efficiency. This idea is implemented in DQN, namely the Experience replay.  This algorithm stores the transitions in a buffer, and uniformly random sample a batch of transitions to learn from at each step. This part becomes a supervised learning problem: given a batch of samples, the network parameters are updated through minimizing the loss function which measures the difference between the on line network estimated value and the target value.
+
+Great! Now we have a algorithm outperforms human on Atari 2600 games! This is just a start. Before we go further to go through enhancements on DQN, let's take a look at what issues of DQN still exists and how possibly further improvements can be developed.
 
 **The general goal**: have a better estimation of Q.
 
 **Existing Issues of DQN**:  
-1. Data efficency issue because of using uniform random experience sampling  
+1. Data efficiency issue because of using uniform random experience sampling  
 2. Overestimation caused by max operation  
 3. Low efficiency exploration  
 
@@ -86,7 +86,7 @@ $$Q = Q + (A - \bar{A})$$
 
 ### Prioritized Experience Replay
 1. Sampling with TD-error.  
-2. Intermidieate factor between prioritized sampling and uniform sampling 
+2. Intermediate factor between prioritized sampling and uniform sampling 
 3. Correct estimation bias with importance sampling
 
 ### A3C  
