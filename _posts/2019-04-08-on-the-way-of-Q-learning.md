@@ -96,6 +96,170 @@ Multi-step estimation.
 Estimate distribution of Q instead of expectation.
 
 ### Noisy Net
+ <span style="color:blue">We introduce NoisyNet, a deep reinforcement learning agent with parametric noise
+added to its weights, and show that the induced stochasticity of the agent’s policy
+can be used to aid efficient exploration. The parameters of the noise are learned
+with gradient descent along with the remaining network weights. NoisyNet is
+straightforward to implement and adds little computational overhead. We find that
+replacing the conventional exploration heuristics for A3C, DQN and Dueling agents
+(entropy reward and -greedy respectively) with NoisyNet yields substantially
+higher scores for a wide range of Atari games, in some cases advancing the agent
+from sub to super-human performance.</span>
+
+ <span style="color:blue">We propose a simple alternative approach, called NoisyNet, where learned perturbations of the
+network weights are used to drive exploration. The key insight is that a single change to the weight
+vector can induce a consistent, and potentially very complex, state-dependent change in policy over
+multiple time steps – unlike dithering approaches where decorrelated (and, in the case of -greedy,
+state-independent) noise is added to the policy at every step. The perturbations are sampled from
+a noise distribution. The variance of the perturbation is a parameter that can be considered as
+the energy of the injected noise. These variance parameters are learned using gradients from the
+reinforcement learning loss function, along side the other parameters of the agent. The approach
+differs from parameter compression schemes such as variational inference (Hinton & Van Camp,
+1993; Bishop, 1995; Graves, 2011; Blundell et al., 2015; Gal & Ghahramani, 2016) and flat minima
+search (Hochreiter & Schmidhuber, 1997) since we do not maintain an explicit distribution over
+weights during training but simply inject noise in the parameters and tune its intensity automatically.
+Consequently, it also differs from Thompson sampling (Thompson, 1933; Lipton et al., 2016) as the
+distribution on the parameters of our agents does not necessarily converge to an approximation of a
+posterior distribution.</span>
+
+ <span style="color:blue">At a high level our algorithm is a randomised value function, where the functional form is a neural
+network. Randomised value functions provide a provably efficient means of exploration (Osband
+et al., 2014). Previous attempts to extend this approach to deep neural networks required many
+duplicates of sections of the network (Osband et al., 2016). By contrast in our NoisyNet approach
+while the number of parameters in the linear layers of the network is doubled, as the weights are a
+simple affine transform of the noise, the computational complexity is typically still dominated by
+the weight by activation multiplications, rather than the cost of generating the weights. Additionally,
+it also applies to policy gradient methods such as A3C out of the box (Mnih et al., 2016). Most
+recently (and independently of our work) Plappert et al. (2017) presented a similar technique where
+constant Gaussian noise is added to the parameters of the network. Our method thus differs by the
+ability of the network to adapt the noise injection with time and it is not restricted to Gaussian noise
+distributions. We need to emphasise that the idea of injecting noise to improve the optimisation
+process has been thoroughly studied in the literature of supervised learning and optimisation under
+different names (e.g., Neural diffusion process (Mobahi, 2016) and graduated optimisation (Hazan
+et al., 2016)). These methods often rely on a noise of vanishing size that is non-trainable, as opposed
+to NoisyNet which tunes the amount of noise by gradient descent.</span>
+
+ <span style="color:blue">NoisyNets are neural networks whose weights and biases are perturbed by a parametric function
+of the noise. These parameters are adapted with gradient descent. More precisely, let y = fθ(x)
+be a neural network parameterised by the vector of noisy parameters θ which takes the input x and
+outputs y. We represent the noisy parameters θ as θ
+def = µ + Σ  ε, where ζ
+def = (µ, Σ) is a set of
+vectors of learnable parameters, ε is a vector of zero-mean noise with fixed statistics and  represents
+element-wise multiplication. The usual loss of the neural network is wrapped by expectation over the
+noise ε: L¯(ζ)
+def = E [L(θ)]. Optimisation now occurs with respect to the set of parameters ζ.
+Consider a linear layer of a neural network with p inputs and q outputs, represented by
+y = wx + b, (8)
+where x ∈ R
+p
+is the layer input, w ∈ R
+q×p
+the weight matrix, and b ∈ R
+q
+the bias. The corresponding
+noisy linear layer is defined as:
+y
+def = (µ
+w + σ
+w  ε
+w)x + µ
+b + σ
+b  ε
+b
+, (9)
+where µ
+w + σ
+w  ε
+w and µ
+b + σ
+b  ε
+b
+replace w and b in Eq. (8), respectively. The parameters
+µ
+w ∈ R
+q×p
+, µ
+b ∈ R
+q
+, σ
+w ∈ R
+q×p
+and σ
+b ∈ R
+q
+are learnable whereas ε
+w ∈ R
+q×p
+and ε
+b ∈ R
+q
+are
+noise random variables (the specific choices of this distribution are described below). We provide a
+graphical representation of a noisy linear layer in Fig. 4 (see Appendix B).
+We now turn to explicit instances of the noise distributions for linear layers in a noisy network.
+We explore two options: Independent Gaussian noise, which uses an independent Gaussian noise
+entry per weight and Factorised Gaussian noise, which uses an independent noise per each output
+and another independent noise per each input. The main reason to use factorised Gaussian noise is
+to reduce the compute time of random number generation in our algorithms. This computational
+overhead is especially prohibitive in the case of single-thread agents such as DQN and Duelling. For
+this reason we use factorised noise for DQN and Duelling and independent noise for the distributed
+A3C, for which the compute time is not a major concern.</span>
+
+ <span style="color:blue">(a) Independent Gaussian noise: the noise applied to each weight and bias is independent, where
+each entry ε
+w
+i,j (respectively each entry ε
+b
+j
+) of the random matrix ε
+w (respectively of the random
+vector ε
+b
+) is drawn from a unit Gaussian distribution. This means that for each noisy linear layer,
+there are pq + q noise variables (for p inputs to the layer and q outputs).
+
+ <span style="color:blue">(b) Factorised Gaussian noise: by factorising ε
+w
+i,j , we can use p unit Gaussian variables εi for noise
+of the inputs and and q unit Gaussian variables εj for noise of the outputs (thus p + q unit
+Gaussian variables in total). Each ε
+w
+i,j and ε
+b
+j
+can then be written as:
+ε
+w
+i,j = f(εi)f(εj ), (10)
+ε
+b
+j = f(εj ), (11)
+where f is a real-valued function. In our experiments we used f(x) = sgn(x)
+p
+|x|. Note that
+for the bias Eq. (11) we could have set f(x) = x, but we decided to keep the same output noise
+for weights and biases.</span>
+
+ <span style="color:blue">Since the loss of a noisy network, L¯(ζ) = E [L(θ)], is an expectation over the noise, the gradients are
+straightforward to obtain:
+∇L¯(ζ) = ∇E [L(θ)] = E [∇µ,ΣL(µ + Σ  ε)] . (12)
+We use a Monte Carlo approximation to the above gradients, taking a single sample ξ at each step of
+optimisation:
+∇L¯(ζ) ≈ ∇µ,ΣL(µ + Σ  ξ). (13)</span>
+
+ <span style="color:blue">We now turn to our application of noisy networks to exploration in deep reinforcement learning. Noise
+drives exploration in many methods for reinforcement learning, providing a source of stochasticity
+external to the agent and the RL task at hand. Either the scale of this noise is manually tuned across a
+wide range of tasks (as is the practice in general purpose agents such as DQN or A3C) or it can be
+manually scaled per task. Here we propose automatically tuning the level of noise added to an agent
+for exploration, using the noisy networks training to drive down (or up) the level of noise injected
+into the parameters of a neural network, as needed.
+A noisy network agent samples a new set of parameters after every step of optimisation. Between
+optimisation steps, the agent acts according to a fixed set of parameters (weights and biases). This
+ensures that the agent always acts according to parameters that are drawn from the current noise
+distribution.</span>
+
 Replacing linear layer with stochastic layer.
 
 $$y = b+Wx \leftarrow y = (b+Wx) + (b*\epsilon^b + W*\epsilon^Wx)$$
