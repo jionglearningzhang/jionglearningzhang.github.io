@@ -92,8 +92,56 @@ $$Q = Q + (A - \bar{A})$$
 ### A3C  
 Multi-step estimation.
 
+<span style="color:red">  Second, we make the observation that multiple actors-learners running in parallel are likely to be exploring different parts of the environment. Moreover, one can explicitly use different exploration policies in each actor-learner
+to maximize this diversity. By running different exploration policies in different threads, the overall changes being made to the parameters by multiple actor-learners applying online updates in parallel are likely to be less correlated in time than a single agent applying online updates.
+Hence, we do not use a replay memory and rely on parallel
+actors employing different exploration policies to perform
+the stabilizing role undertaken by experience replay in the
+DQN training algorithm.In addition to stabilizing learning, using multiple parallel
+actor-learners has multiple practical benefits. First, we obtain a reduction in training time that is roughly linear in
+the number of parallel actor-learners. Second, since we no
+longer rely on experience replay for stabilizing learning we
+are able to use on-policy reinforcement learning methods
+such as Sarsa and actor-critic to train neural networks in a
+stable way. We now describe our variants of one-step Qlearning, one-step Sarsa, n-step Q-learning and advantage
+actor-critic.Asynchronous one-step Q-learning: Pseudocode for our
+variant of Q-learning, which we call Asynchronous onestep Q-learning, is shown in Algorithm 1. Each thread interacts with its own copy of the environment and at each
+step computes a gradient of the Q-learning loss. We use
+a shared and slowly changing target network in computing the Q-learning loss, as was proposed in the DQN training method. We also accumulate gradients over multiple
+timesteps before they are applied, which is similar to using minibatches. This reduces the chances of multiple actor learners overwriting each other’s updates. Accumulating updates over several steps also provides some ability to
+trade off computational efficiency for data efficiency.
+Finally, we found that giving each thread a different exploration policy helps improve robustness. Adding diversity
+to exploration in this manner also generally improves performance through better exploration. While there are many
+possible ways of making the exploration policies differ we
+experiment with using -greedy exploration with  periodically sampled from some distribution by each thread.Asynchronous one-step Sarsa: The asynchronous onestep Sarsa algorithm is the same as asynchronous one-step Q-learning as given in Algorithm 1 except that it uses a different target value for Q(s, a). The target value used by one-step Sarsa is r + γQ(s 0 , a0 ; θ −) where a 0 is the action taken in state s 0 (Rummery & Niranjan, 1994; Sutton & Barto, 1998). We again use a target network and updates accumulated over multiple timesteps to stabilize learning.Asynchronous n-step Q-learning: Pseudocode for our
+variant of **multi-step Q-learning** is shown in Supplementary
+Algorithm S2. The algorithm is somewhat unusual because
+it operates in the forward view by explicitly computing nstep returns, as opposed to the more common backward
+view used by techniques like eligibility traces (Sutton &
+Barto, 1998). We found that using the forward view is easier when training neural networks with momentum-based
+methods and backpropagation through time. In order to
+compute a single update, the algorithm first selects actions
+using its exploration policy for up to tmax steps or until a
+terminal state is reached. This process results in the agent
+receiving up to tmax rewards from the environment since
+its last update. The algorithm then computes gradients for
+n-step Q-learning updates for each of the state-action pairs
+encountered since the last update. Each n-step update uses
+the longest possible n-step return resulting in a one-step
+update for the last state, a two-step update for the second
+last state, and so on for a total of up to tmax updates. The
+accumulated updates are applied in a single gradient step.</span>
+
 ### Distributional DQN  
 Estimate distribution of Q instead of expectation.
+
+
+<span style="color:red"> In this paper we argue for the fundamental importance of the value distribution: the distribution of the random return received by a reinforcement learning agent. This is in contrast to the common approach to reinforcement learning which models the expectation of this return, or value.</span>
+
+
+
+<span style="color:red">In this section we propose an algorithm based on the distributional Bellman optimality operator. In particular, this will require choosing an approximating distribution. Although the Gaussian case has previously been considered (Morimura et al., 2010a; Tamar et al., 2016), to the best of our knowledge we are the first to use a rich class of parametric distributions. 4.1. Parametric Distribution We will model the value distribution using a discrete distribution parametrized by N ∈ N and VMIN, VMAX ∈ R, and whose support is the set of atoms {zi = VMIN + i4z : 0 ≤ i < N}, 4z := VMAX−VMIN N−1 . In a sense, these atoms are the “canonical returns” of our distribution. The atom probabilities are given by a parametric model θ : X × A → R N Zθ(x, a) = zi w.p. pi(x, a) := e θi(x,a) P j e θj (x,a) . The discrete distribution has the advantages of being highly expressive and computationally friendly (see e.g. Van den Oord et al., 2016). 4.2. Projected Bellman Update Using a discrete distribution poses a problem: the Bellman update T Zθ and our parametrization Zθ almost always have disjoint supports. From the analysis of Section 3 it would seem natural to minimize the Wasserstein metric (viewed as a loss) between T Zθ and Zθ, which is also conveniently robust to discrepancies in support. However, a second issue prevents this: in practice we are typically restricted to learning from sample transitions, which is not possible under the Wasserstein loss (see Prop. 5 and toy results in the appendix).</span>
+
 
 ### Noisy Net
  <span style="color:blue">We introduce NoisyNet, a deep reinforcement learning agent with parametric noise
