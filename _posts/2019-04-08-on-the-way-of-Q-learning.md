@@ -1,6 +1,6 @@
 ---
 layout: post
-title: The way to learn Q better: from monte-carlo method to Rainbow
+title: The way to learn Q better from monte-carlo method to Rainbow
 date: 2019-04-08 01:09:00
 tags: reinforcement learning
 ---
