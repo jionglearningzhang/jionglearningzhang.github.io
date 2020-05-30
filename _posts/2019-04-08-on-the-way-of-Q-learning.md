@@ -1,6 +1,6 @@
 ---
 layout: post
-title: The way to learn Q better
+title: The way to learn Q better: from monte-carlo method to Rainbow
 date: 2019-04-08 01:09:00
 tags: reinforcement learning
 ---
@@ -322,6 +322,61 @@ All of the improvements mentioned previously are independent and complementary t
 4. Priorized experience replay with sampling using KL loss as the proxy (instead of the TD-error in the non-distributional case).   
 5. As used in Noisy net, linear layers in Q networks are replaced by stochastic layers.
 
+ <span style="color:blue">Ablation studies. Since Rainbow integrates several different ideas into a single agent, we conducted additional experiments to understand the contribution of the various components, in the context of this specific combination.
+To gain a better understanding of the contribution of each
+component to the Rainbow agent, we performed ablation
+studies. In each ablation, we removed one component from
+the full Rainbow combination. Figure 3 shows a comparison for median normalized score of the full Rainbow to six
+ablated variants. Figure 2 (bottom row) shows a more detailed breakdown of how these ablations perform relative to
+different thresholds of human normalized performance, and
+Figure 4 shows the gain or loss from each ablation for every
+game, averaged over the full learning run.
+Prioritized replay and multi-step learning were the two
+most crucial components of Rainbow, in that removing either component caused a large drop in median performance.
+Unsurprisingly, the removal of either of these hurt early performance. Perhaps more surprisingly, the removal of multistep learning also hurt final performance. Zooming in on individual games (Figure 4), we see both components helped
+almost uniformly across games (the full Rainbow performed
+better than either ablation in 53 games out of 57).
+Distributional Q-learning ranked immediately below the
+previous techniques for relevance to the agent’s performance. Notably, in early learning no difference is apparent, as shown in Figure 3, where for the first 40 million
+frames the distributional-ablation performed as well as the
+full agent. However, without distributions, the performance
+of the agent then started lagging behind. When the results are
+separated relatively to human performance in Figure 2, we
+see that the distributional-ablation primarily seems to lags
+on games that are above human level or near it.
+In terms of median performance, the agent performed
+better when Noisy Nets were included; when these are removed and exploration is delegated to the traditional -
+greedy mechanism, performance was worse in aggregate
+(red line in Figure 3). While the removal of Noisy Nets produced a large drop in performance for several games, it also
+provided small increases in other games (Figure 4).
+In aggregate, we did not observe a significant difference
+when removing the dueling network from the full Rainbow.
+The median score, however, hides the fact that the impact
+of Dueling differed between games, as shown by Figure 4.
+Figure 2 shows that Dueling perhaps provided some improvement on games with above-human performance levels
+(# games > 200%), and some degradation on games with
+sub-human performance (# games > 20%).
+Also in the case of double Q-learning, the observed difference in median performance (Figure 3) is limited, with the
+component sometimes harming or helping depending on the
+game (Figure 4). To further investigate the role of double Qlearning, we compared the predictions of our trained agents
+to the actual discounted returns computed from clipped rewards. Comparing Rainbow to the agent where double Qlearning was ablated, we observed that the actual returns are
+often higher than 10 and therefore fall outside the support
+of the distribution, spanning from −10 to +10. This leads to
+underestimated returns, rather than overestimations. We hypothesize that clipping the values to this constrained range
+counteracts the overestimation bias of Q-learning. Note,
+however, that the importance of double Q-learning may increase if the support of the distributions is expanded.
+In the appendix, for each game we show final performance
+and learning curves for Rainbow, its ablations, and baselines.
+Discussion
+We have demonstrated that several improvements to DQN
+can be successfully integrated into a single learning algorithm that achieves state-of-the-art performance. Moreover,
+we have shown that within the integrated algorithm, all but
+one of the components provided clear performance benefits. There are many more algorithmic components that we
+were not able to include, which would be promising candidates for further experiments on integrated agents. Among
+the many possible candidates, we discuss several below.
+We have focused here on value-based methods in the
+Q-learning family. We have not considered purely policybased RL algorithms such as trust-region policy optimisa-
+</span>
 
 <img src="/images/rainbow.png" width="70%" style="margin-left: auto;
   margin-right: auto;">
