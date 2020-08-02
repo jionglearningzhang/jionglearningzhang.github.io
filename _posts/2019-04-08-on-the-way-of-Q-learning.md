@@ -5,6 +5,8 @@ date: 2019-04-08 01:09:00
 tags: reinforcement learning; Q learning; TD-learning
 ---
 
+# The way of reinforcement learning to learn Q better: from monte-carlo method to Rainbow
+
 >A big branch of solving reinforcement learning is based on learning the Q (state-action value function). Let's take a look on how the methods evolved to learn Q better.  
 
 [Before Deep Q Network](#befored-deep-q-network)  
@@ -15,7 +17,14 @@ tags: reinforcement learning; Q learning; TD-learning
 
 ![Reinforcement Learning Algorithms]({{'/images/deepQ.jpg'|relative_url}})
 
-The goal of reinforcement learning is to establish a policy, based on which to select actions at given states so that the long term return is maximized. One way is to learn the optimal state-action value function $Q^\*(S, A)$, and thus the optimal policy naturaly becomes $\pi^\*(A|S) = \underset{a'}{\arg\max}Q(S_t, a')$. With the model-free problem setting, the problem reduces as how to estimate the optimal state-action value function $Q^\*(S, A)$. Through the generalized policy iterations, policy evaluation estimates the value function, and in the policy improvement part, policy get improved with updated value function. Thus, the leftover issue is how to estimate the state-action value function $Q(S,A)$ from the experiences (state transitions) the agent gets through interact with the environment. This post talk through value-based milestone methods to get the idea of how we learn Q better.
+The goal of reinforcement learning is to establish a policy, based on which to select actions at given states so that the long term return is maximized. 
+One way is to learn the optimal state-action value function $Q^\*(S, A)$, and thus the 
+optimal policy naturaly becomes $\pi^\*(A|S)=\underset{a'}{\arg\max}Q(S_t, a')$. 
+With the model-free problem setting, the problem reduces as how to estimate the optimal state-action value function $Q^\*(S, A)$.
+ Through the generalized policy iterations, policy evaluation estimates the value function, and in the policy improvement part, 
+ policy get improved with updated value function. Thus, the leftover issue is how to estimate the state-action value function $Q(S,A)$ 
+ from the experiences (state transitions) the agent gets through interact with the environment. 
+ This post talk through value-based milestone methods to get the idea of how we learn Q better.
 
 <span style="color:red">
 Value Iteration
