@@ -328,7 +328,8 @@ All of the improvements mentioned previously are independent and complementary t
 4. Priorized experience replay with sampling using KL loss as the proxy (instead of the TD-error in the non-distributional case).   
 5. As used in Noisy net, linear layers in Q networks are replaced by stochastic layers.
 
- <span style="color:blue">Ablation studies. Since Rainbow integrates several different ideas into a single agent, we conducted additional experiments to understand the contribution of the various components, in the context of this specific combination.
+ <span style="color:blue">
+ Ablation studies. Since Rainbow integrates several different ideas into a single agent, we conducted additional experiments to understand the contribution of the various components, in the context of this specific combination.
 To gain a better understanding of the contribution of each
 component to the Rainbow agent, we performed ablation
 studies. In each ablation, we removed one component from
