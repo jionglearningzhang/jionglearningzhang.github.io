@@ -6,9 +6,6 @@ tags: meta learning
 ---
 
 
-
-### Overview of supervised meta-learning
-
 > When facing a machine learning task, not every time there's enough data. Meta-learning enables the model learn through a set of tasks to learn faster when facing a new task. In this post, we will go over three major ways of the meta-learning techniques: black-box, MAML and protoNet.
 
 

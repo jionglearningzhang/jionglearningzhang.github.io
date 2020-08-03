@@ -1,6 +1,6 @@
 ---
 layout: post
-title: The way of reinforcement learning to learn Q better: from monte-carlo method to Rainbow
+title: The way of reinforcement learning to learn Q better
 date: 2019-04-08 01:09:00
 tags: reinforcement learning; Q learning; TD-learning
 ---
@@ -18,8 +18,21 @@ tags: reinforcement learning; Q learning; TD-learning
 ![Reinforcement Learning Algorithms]({{'/images/deepQ.jpg'|relative_url}})
 
 The goal of reinforcement learning is to establish a policy, based on which to select actions at given states so that the long term return is maximized. 
+
+Two common approaches to find optimal policy using recursive relation of Bellman Equation in MOdel based algorithms.
+
+1. **Value Iteration**: In this method, the optimal policy (i.e., optimal action for a given state) is obtained by choosing the action that maximizes optimal state value function for the given state. The optimal state value is obtained using an iterative algorithm, that's why this method is called value iteration. In this approach policy function in not used explicitly during iteration.
+2. **Policy Iteration**: In this method, optimal policy is obtained by finding better estimates of optimal policy function iteratively, That's why this method is called policy iteration. There are two steps in this method:
+   1. Policy evaluation: in this step we evaluate the state value function for current policy
+   2. Policy improvement: in this step the policy function is improved by selecting the action that maximizes the state value function for each state.
+
 One way is to learn the optimal state-action value function $Q^\*(S, A)$, and thus the 
 optimal policy naturaly becomes $\pi^\*(A|S)=\underset{a'}{\arg\max}Q(S_t, a')$. 
+
+Almost all reinforcement learning algorithms are based on estimating *value functions* ($V$) --functions of states (or of state-action pairs) that estimate *how good* it is for the agent to be in a given state (or how good it is to perform a given action in a given state). The notion of "how good" here is defined in terms of future rewards that can be expected, or, to be precise, in terms of expected return. Of course the rewards the agent can expect to receive in the future depend on what actions it will take. Accordingly, value functions are defined with respect to particular policies.
+
+Recall that a policy, ![img](http://www.incompleteideas.net/book/ebook/inimgtmp411.png), is a mapping from each state, ![img](http://www.incompleteideas.net/book/ebook/inimgtmp412.png), and action, ![img](http://www.incompleteideas.net/book/ebook/inimgtmp413.png), to the probability ![img](http://www.incompleteideas.net/book/ebook/inimgtmp414.png) of taking action ![img](http://www.incompleteideas.net/book/ebook/inimgtmp415.png) when in state ![img](http://www.incompleteideas.net/book/ebook/inimgtmp416.png). Informally, the *value* of a state ![img](http://www.incompleteideas.net/book/ebook/inimgtmp417.png) under a policy ![img](http://www.incompleteideas.net/book/ebook/inimgtmp418.png), denoted ![img](http://www.incompleteideas.net/book/ebook/inimgtmp419.png), is the expected return when starting in ![img](http://www.incompleteideas.net/book/ebook/inimgtmp420.png) and following ![img](http://www.incompleteideas.net/book/ebook/inimgtmp421.png) thereafter. 
+
 With the model-free problem setting, the problem reduces as how to estimate the optimal state-action value function $Q^\*(S, A)$.
  Through the generalized policy iterations, policy evaluation estimates the value function, and in the policy improvement part, 
  policy get improved with updated value function. Thus, the leftover issue is how to estimate the state-action value function $Q(S,A)$ 
@@ -28,8 +41,7 @@ With the model-free problem setting, the problem reduces as how to estimate the 
 
 <span style="color:red">
 Value Iteration
-Value iteration computes the optimal state value function by iteratively improving the estimate of V(s). The algorithm initialize V(s) to arbitrary random values. It repeatedly updates the Q(s, a) and V(s) values until they converges. Value iteration is guaranteed to converge to the optimal values.
-</span>
+Value iteration computes the optimal state value function by iteratively improving the estimate of V(s). The algorithm initialize V(s) to arbitrary random values. It repeatedly updates the Q(s, a) and V(s) values until they converges. Value iteration is guaranteed to converge to the optimal values. TODO: Proof optimal values converges</span>
 
 ## Before Deep Q Network
 
@@ -398,18 +410,16 @@ Q-learning family. We have not considered purely policybased RL algorithms such 
   margin-right: auto;">
 
 ## References
-1. [Human-level control through deep reinforcement
-learning](https://storage.googleapis.com/deepmind-media/dqn/DQNNaturePaper.pdf)
-2. [
-Dueling Network Architectures for Deep Reinforcement Learning](https://arxiv.org/abs/1511.06581)
-3. [
-Deep Reinforcement Learning with Double Q-learning](https://arxiv.org/abs/1509.06461)
-4. [
-Prioritized Experience Replay](https://arxiv.org/abs/1511.05952)
-5. [
-Asynchronous Methods for Deep Reinforcement Learning](https://arxiv.org/abs/1602.01783)
-6. [An Analysis of Temporal-Difference Learning
-with Function Approximation](http://web.mit.edu/jnt/www/Papers/J063-97-bvr-td.pdf)
-7. [Algorithms for Reinforcement Learning](https://sites.ualberta.ca/~szepesva/papers/RLAlgsInMDPs.pdf)
-8. [Rainbow: Combining Improvements in Deep Reinforcement Learning](https://arxiv.org/abs/1710.02298)
-9. [Reinforcement Learning: An Introduction](https://mitpress.mit.edu/books/reinforcement-learning-second-edition)
+1. [Reinforcement learning an introduction](https://www.andrew.cmu.edu/course/10-703/textbook/BartoSutton.pdf)
+2. [Human-level control through deep reinforcement
+  learning](https://storage.googleapis.com/deepmind-media/dqn/DQNNaturePaper.pdf)
+3. [Dueling Network Architectures for Deep Reinforcement Learning](https://arxiv.org/abs/1511.06581)
+4. [Deep Reinforcement Learning with Double Q-learning](https://arxiv.org/abs/1509.06461)
+5. [Prioritized Experience Replay](https://arxiv.org/abs/1511.05952)
+6. [Asynchronous Methods for Deep Reinforcement Learning](https://arxiv.org/abs/1602.01783)
+7. [An Analysis of Temporal-Difference Learning
+  with Function Approximation](http://web.mit.edu/jnt/www/Papers/J063-97-bvr-td.pdf)
+8. [Algorithms for Reinforcement Learning](https://sites.ualberta.ca/~szepesva/papers/RLAlgsInMDPs.pdf)
+9. [Rainbow: Combining Improvements in Deep Reinforcement Learning](https://arxiv.org/abs/1710.02298)
+10. [Reinforcement Learning: An Introduction](https://mitpress.mit.edu/books/reinforcement-learning-second-edition)
+
