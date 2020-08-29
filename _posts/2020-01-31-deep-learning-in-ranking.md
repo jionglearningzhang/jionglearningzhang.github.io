@@ -6,10 +6,10 @@ tags: search ranking
 ---
 
 
-Learning to rank is playing an important role in
+> Learning to rank is playing an important role in
 search, recommendation, and
 many other applications. 
-We will walk through the learning-to-rank (LTR) problems and major algorithems in this post, and discuss about how deep learning helps to acheive better performance.
+We will walk through the learning-to-rank (LTR) problems and major algorithms in this post, and discuss about how deep learning helps to achieve better performance.
 
 For the rest of this post, we will take search problem as an example to talk though. 
 %search ranking problem definition
@@ -30,9 +30,9 @@ Point-wise prediction strategy takes each candidate and try to predict the relev
 Thus, the ranking problem is converted to a supervised learning problem, and common supervised learning algorithms
 can be directly applied.
 
-While the independently predicted score does not mean much in a ranking problem, since the problem cares more about the reletive position of each candidate.
+While the independently predicted score does not mean much in a ranking problem, since the problem cares more about the relative position of each candidate.
 Pair-wise strategy groups ranking candidates into pairs and then try to predict which one has a higher relevance.
-The major question then is how to define a listwise loss function, representing the difference between the ranking list output by
+The major question then is how to define a list-wise loss function, representing the difference between the ranking list output by
 a ranking model and the ranking list given as ground truth.
 
 LambdaRank

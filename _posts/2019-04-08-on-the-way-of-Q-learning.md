@@ -5,9 +5,7 @@ date: 2019-04-08 01:09:00
 tags: reinforcement learning; Q learning; TD-learning
 ---
 
-# The way of reinforcement learning to learn Q better: from monte-carlo method to Rainbow
-
->A big branch of solving reinforcement learning is based on learning the Q (state-action value function). Let's take a look on how the methods evolved to learn Q better.  
+> A big branch of solving reinforcement learning is based on learning the Q (state-action value function). Let's take a look on how the methods evolved to learn Q better.  Let's walk through the way of reinforcement learning to learn Q better: from monte-carlo method to Rainbow
 
 [Before Deep Q Network](#befored-deep-q-network)  
 [Kick-start with DQN](#dqn)  
@@ -412,13 +410,13 @@ Q-learning family. We have not considered purely policybased RL algorithms such 
 ## References
 1. [Reinforcement learning an introduction](https://www.andrew.cmu.edu/course/10-703/textbook/BartoSutton.pdf)
 2. [Human-level control through deep reinforcement
-  learning](https://storage.googleapis.com/deepmind-media/dqn/DQNNaturePaper.pdf)
+    learning](https://storage.googleapis.com/deepmind-media/dqn/DQNNaturePaper.pdf)
 3. [Dueling Network Architectures for Deep Reinforcement Learning](https://arxiv.org/abs/1511.06581)
 4. [Deep Reinforcement Learning with Double Q-learning](https://arxiv.org/abs/1509.06461)
 5. [Prioritized Experience Replay](https://arxiv.org/abs/1511.05952)
 6. [Asynchronous Methods for Deep Reinforcement Learning](https://arxiv.org/abs/1602.01783)
 7. [An Analysis of Temporal-Difference Learning
-  with Function Approximation](http://web.mit.edu/jnt/www/Papers/J063-97-bvr-td.pdf)
+    with Function Approximation](http://web.mit.edu/jnt/www/Papers/J063-97-bvr-td.pdf)
 8. [Algorithms for Reinforcement Learning](https://sites.ualberta.ca/~szepesva/papers/RLAlgsInMDPs.pdf)
 9. [Rainbow: Combining Improvements in Deep Reinforcement Learning](https://arxiv.org/abs/1710.02298)
 10. [Reinforcement Learning: An Introduction](https://mitpress.mit.edu/books/reinforcement-learning-second-edition)
