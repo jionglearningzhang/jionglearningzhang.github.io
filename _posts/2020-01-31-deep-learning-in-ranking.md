@@ -22,7 +22,6 @@ list of documents; a ranking function is then created using
 the training data, such that the model can precisely predict
 the ranking lists in the training data.
 
-
 % solving strategy / machine learning problem definition
 Given the above problem definition, we could tackle this problem with three strategies:
 with Point-wise prediction, pair-wise prediction or list-wise prediction.
@@ -45,5 +44,45 @@ Instead of take one or two candidates as an instance, List-wise takes the whole 
 
 
 # How deep learning improves ranking further
+
+## ListNet
+
+Based on the top one probability, with a Neural Network as a model and Gradient Descendant as optimization, the authors are able to optimize the listwide loss function.
+
+In ListNet, the ranking function, based on the Neural Network model w is denoted as fw. Given a feature vector xj(i), fw(xj(i))will assign an score for it.
+
+If we take the exponential function as , we can rewrite the top one probability of document dj(i)as:
+
+![Image for post](https://miro.medium.com/max/60/1*qFNDaKTdTp5GVdhle6a6GQ.png?q=20)
+
+![Image for post](https://miro.medium.com/max/358/1*qFNDaKTdTp5GVdhle6a6GQ.png)
+
+top one probability of document dj
+
+The learning algorithm for ListNet can be described as:
+
+> **Input**: training data (pairs of document, features and target scores)
+>
+> **Parameter**: number of iterations T and learning rate η
+>
+> Initialise parameter ω (weights)
+>
+> **for** t = 1 **to** T **do**
+>
+> **for** i = 1 **to** m **do**
+>
+> Input x(i) of query q(i) to Neural Network and compute score list z(i)(fω) with current ω
+>
+> Compute gradient 𝛥ω
+>
+> Update ω = ω − η × 𝛥ω
+>
+> **end for**
+>
+> **end for**
+>
+> Output Neural Network model ω
+
+
 
 deep learning features
